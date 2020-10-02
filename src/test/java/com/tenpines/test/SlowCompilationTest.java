@@ -2,21 +2,25 @@ package com.tenpines.test;
 
 import info.kfgodel.jspek.api.JavaSpec;
 import info.kfgodel.jspek.api.JavaSpecRunner;
+import info.kfgodel.jspek.api.contexts.TestContext;
 import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * This class takes 23s to execute mvn clean test with jdk8, and only 9s with jdk11
+ */
 @RunWith(JavaSpecRunner.class)
-public class SpecExampleTest extends JavaSpec<CompileTestContext> {
+public class SlowCompilationTest extends JavaSpec<TestContext> {
 
   @Override
   public void define() {
 
-    describe("nivel 1", () -> {
-      describe("nivel 2", () -> {
-        describe("nivel 3", () -> {
-          describe("nivel 4", () -> {
-            describe("nivel 5", () -> {
+    describe("level 1", () -> {
+      describe("level 2", () -> {
+        describe("level 3", () -> {
+          describe("level 4", () -> {
+            describe("level 5", () -> {
               it("test",()->{
                 assertThat("algo").isEqualToIgnoringCase("Algo");
               });
@@ -83,9 +87,9 @@ public class SpecExampleTest extends JavaSpec<CompileTestContext> {
             });
           });
         });
-
       });
     });
+
 
 
   }
